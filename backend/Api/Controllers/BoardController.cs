@@ -1,3 +1,4 @@
+using Api.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers;
@@ -7,8 +8,8 @@ namespace Api.Controllers;
 public class BoardController : ControllerBase
 {
     [HttpGet]
-    public string Get()
+    public Board Get()
     {
-        return "board";
+        return new("MyBoard");
     }
 }

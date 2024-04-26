@@ -4,11 +4,12 @@ namespace Api.IntegrationTests.Controllers;
 
 public class BoardControllerTests
 {
+    private BoardController _sut = new();
+
     [Fact]
-    public void GetReturnsBoardString()
+    public void GetReturnsBoard()
     {
-        var sut = new BoardController();
-        var res = sut.Get();
-        Assert.Equal("board", res);
+        var res = _sut.Get();
+        Assert.Equal("MyBoard", res.Name);
     }
 }
