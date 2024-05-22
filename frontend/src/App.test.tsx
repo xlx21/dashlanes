@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import App from './App';
 
 test('render get board button', () => {
@@ -11,9 +11,10 @@ test('render get board button', () => {
 test('get board', async () => {
   render(<App />);
   const getBoardButton = screen.getByText(/get board/i);
-  getBoardButton.click()
 
-  await new Promise(resolve => setTimeout(resolve, 1500));
+  act(() => {
+    getBoardButton.click()
+  })
 
   const boardName = document.getElementById("boardName");
   expect(boardName).toBeInTheDocument();
