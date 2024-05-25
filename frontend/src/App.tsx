@@ -1,16 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, } from 'react';
+import { IBoardApi } from './api/BoardApi';
 import './App.css';
 
-function App() {
+const App: React.FC<AppProps> = ({ boardApi }) => {
   const [boardName, setBoardName] = useState("");
   const [isFetched, setIsFetched] = useState(false);
 
-  const getBoard = () => {
-    fetch("http://localhost:5284/board")
-      .then(res => res.json())
-      .then(board => setBoardName(board.name))
-      .catch(err => console.error(err))
-    setIsFetched(true);
+  const getBoard = async () => {
+    try {
+      const board = await boardApi.get();
+      setBoardName(board.name);
+      setIsFetched(true);
+    }
+    catch (err) {
+      console.error(err);
+    }
   }
 
   return (
@@ -20,5 +24,10 @@ function App() {
     </div>
   );
 }
+
+class AppProps {
+  boardApi!: IBoardApi;
+}
+
 
 export default App;

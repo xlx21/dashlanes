@@ -1,21 +1,19 @@
-import React from 'react';
 import { render, screen, act } from '@testing-library/react';
+import { FakeBoardApi } from './fakes/api';
 import App from './App';
 
-test('render get board button', () => {
-  render(<App />);
+test("render get board button", () => {
+  render(<App boardApi={new FakeBoardApi()} />);
   const getBoardButton = screen.getByText(/get board/i);
   expect(getBoardButton).toBeInTheDocument();
 });
 
-test('get board', async () => {
-  render(<App />);
+test("get and render the name of board", async () => {
+  render(<App boardApi={new FakeBoardApi()} />);
+
   const getBoardButton = screen.getByText(/get board/i);
+  await act(async () => getBoardButton.click());
 
-  act(() => {
-    getBoardButton.click()
-  })
-
-  const boardName = document.getElementById("boardName");
+  const boardName = screen.getByText(/myboard/i);
   expect(boardName).toBeInTheDocument();
 });
