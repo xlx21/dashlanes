@@ -11,9 +11,9 @@ test("render get board button", () => {
 test("get and render the name of board", async () => {
   render(<App boardApi={new FakeBoardApi()} />);
 
-  const getBoardButton = screen.getByText(/get board/i);
-  await act(async () => getBoardButton.click());
+  await act(async () => screen.getByText(/get board/i).click());
 
-  const boardName = screen.getByText(/myboard/i);
-  expect(boardName).toBeInTheDocument();
+  expect(screen.getByText(/myboard/i)).toBeInTheDocument();
+  expect(screen.getByText(/lane1/i)).toBeInTheDocument();
+  expect(screen.getByText(/lane2/i)).toBeInTheDocument();
 });

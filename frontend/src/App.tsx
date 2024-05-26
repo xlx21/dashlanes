@@ -1,16 +1,14 @@
 import { useState, } from 'react';
-import { IBoardApi } from './api/BoardApi';
+import { IBoardApi, Board } from './api/BoardApi';
 import './App.css';
 
 const App: React.FC<AppProps> = ({ boardApi }) => {
-  const [boardName, setBoardName] = useState("");
-  const [isFetched, setIsFetched] = useState(false);
+  const [board, setBoard] = useState<Board | null>(null);
 
   const getBoard = async () => {
     try {
       const board = await boardApi.get();
-      setBoardName(board.name);
-      setIsFetched(true);
+      setBoard(board);
     }
     catch (err) {
       console.error(err);
@@ -20,7 +18,18 @@ const App: React.FC<AppProps> = ({ boardApi }) => {
   return (
     <div className="App">
       <button onClick={getBoard}>get board</button>
-      {isFetched && <p id="boardName">{boardName}</p>}
+      {board != null &&
+        <div id="board">
+          <>
+            <h1 id="boardName">{board.name}</h1>
+            {board.lanes.map((lane, i) => (
+              <div id="lane" key={i} >
+                <h2 id="laneName">{lane.name}</h2>
+              </div>
+            ))}
+          </>
+        </div>
+      }
     </div>
   );
 }

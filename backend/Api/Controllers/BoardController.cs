@@ -10,6 +10,8 @@ public class BoardController : ControllerBase
     [HttpGet]
     public Board Get()
     {
-        return new("MyBoard");
+        var lanes = new Lane[] { new("Lane #1"), new("Lane #2") };
+        var board = new Board("MyBoard", lanes);
+        return board;
     }
 }

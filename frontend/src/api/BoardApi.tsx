@@ -11,6 +11,16 @@ export interface IBoardApi {
 
 export class Board {
   name: string;
+  lanes: Array<Lane>;
+
+  constructor(name: string, lanes: Lane[]) {
+    this.name = name;
+    this.lanes = lanes;
+  }
+}
+
+export class Lane {
+  name: string;
 
   constructor(name: string) {
     this.name = name;
