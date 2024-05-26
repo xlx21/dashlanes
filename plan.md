@@ -5,17 +5,20 @@
 
 # step 1 - structure
 - [ ] implement the board structure as planned
-  - a board can have many lanes
-  - a lane can have many stages
-  - a stage can have many tasks
-- [ ] enrich the entities
-  - a board has a name
-  - a lane has a name
-  - a stage has a name
-  - a task has a title and description
+  - [x] board 
+    - [x] name
+    - [x] lanes
+  - [ ] lane 
+    - [x] name
+    - [ ] stages
+  - [ ] stage 
+    - [ ] name
+    - [ ] tasks
+  - [ ] task
+    - [ ] name
+    - [ ] description
 
-# step 2 - functionality
-> WIP
+# step 2 - functionality (WIP)
 - [ ] board
   - [ ] create
   - [ ] rename
