@@ -16,4 +16,8 @@ test("get and render the name of board", async () => {
   expect(screen.getByText(/myboard/i)).toBeInTheDocument();
   expect(screen.getByText(/lane1/i)).toBeInTheDocument();
   expect(screen.getByText(/lane2/i)).toBeInTheDocument();
+  expect(screen.getByText(/stage1/i)).toBeInTheDocument();
+  expect(screen.getByText(/stage2/i)).toBeInTheDocument();
+  expect(screen.getByText(/stage3/i)).toBeInTheDocument();
+  expect(screen.getByText(/stage4/i)).toBeInTheDocument();
 });

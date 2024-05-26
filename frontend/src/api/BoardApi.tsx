@@ -13,13 +13,23 @@ export class Board {
   name: string;
   lanes: Array<Lane>;
 
-  constructor(name: string, lanes: Lane[]) {
+  constructor(name: string, lanes: Array<Lane>) {
     this.name = name;
     this.lanes = lanes;
   }
 }
 
 export class Lane {
+  name: string;
+  stages: Array<Stage>;
+
+  constructor(name: string, stages: Array<Stage>) {
+    this.name = name;
+    this.stages = stages;
+  }
+}
+
+export class Stage {
   name: string;
 
   constructor(name: string) {

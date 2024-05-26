@@ -8,10 +8,13 @@ namespace Api.Controllers;
 public class BoardController : ControllerBase
 {
     [HttpGet]
-    public Board Get()
-    {
-        var lanes = new Lane[] { new("Lane #1"), new("Lane #2") };
-        var board = new Board("MyBoard", lanes);
-        return board;
-    }
+    public Board Get() =>
+        new Board(
+            "board1",
+            new Lane[]
+            {
+                new("lane1", new Stage[] { new("stage1"), new("stage2") }),
+                new("lane2", new Stage[] { new("stage3"), new("stage4") })
+            }
+        );
 }
