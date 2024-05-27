@@ -14,10 +14,21 @@ test("get and render the name of board", async () => {
   await act(async () => screen.getByText(/get board/i).click());
 
   expect(screen.getByText(/myboard/i)).toBeInTheDocument();
+
   expect(screen.getByText(/lane1/i)).toBeInTheDocument();
   expect(screen.getByText(/lane2/i)).toBeInTheDocument();
+
   expect(screen.getByText(/stage1/i)).toBeInTheDocument();
   expect(screen.getByText(/stage2/i)).toBeInTheDocument();
   expect(screen.getByText(/stage3/i)).toBeInTheDocument();
   expect(screen.getByText(/stage4/i)).toBeInTheDocument();
+
+  expect(screen.getByText(/tick1/i)).toBeInTheDocument();
+  expect(screen.getByText(/desc1/i)).toBeInTheDocument();
+  expect(screen.getByText(/tick2/i)).toBeInTheDocument();
+  expect(screen.getByText(/desc2/i)).toBeInTheDocument();
+  expect(screen.getByText(/tick3/i)).toBeInTheDocument();
+  expect(screen.getByText(/desc3/i)).toBeInTheDocument();
+  expect(screen.getByText(/tick4/i)).toBeInTheDocument();
+  expect(screen.getByText(/desc4/i)).toBeInTheDocument();
 });

@@ -19,14 +19,20 @@ const App: React.FC<AppProps> = ({ boardApi }) => {
     <div className="App">
       <button onClick={getBoard}>get board</button>
       {board != null &&
-        <div id="board">
-          <h1 id="boardName">{board.name}</h1>
+        <div className="board">
+          <h1 className="boardName">{board.name}</h1>
           {board.lanes.map((lane, i) => (
-            <div id="lane" key={i} >
-              <h2 id="laneName">{lane.name}</h2>
+            <div className="lane" key={i} >
+              <h2 className="laneName">{lane.name}</h2>
               {lane.stages.map((stage, j) => (
-                <div id="stage" key={j}>
-                  <h3 id="stageName">{stage.name}</h3>
+                <div className="stage" key={j}>
+                  <h3 className="stageName">{stage.name}</h3>
+                  {stage.tickets.map((ticket, k) => (
+                    <div className="ticket" key={k}>
+                      <h4 className="ticketName">{ticket.name}</h4>
+                      <p className="ticketDescription">{ticket.description}</p>
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>

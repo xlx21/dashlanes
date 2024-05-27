@@ -1,5 +1,6 @@
 export default class BoardApi implements IBoardApi {
   async get(): Promise<Board> {
+    // todo: get URL from envvars
     const res = await fetch("http://localhost:5284/board")
     return await res.json()
   }
@@ -31,8 +32,20 @@ export class Lane {
 
 export class Stage {
   name: string;
+  tickets: Array<Ticket>;
 
-  constructor(name: string) {
+  constructor(name: string, tickets: Array<Ticket>) {
     this.name = name;
+    this.tickets = tickets;
+  }
+}
+
+export class Ticket {
+  name: string;
+  description: string;
+
+  constructor(name: string, description: string) {
+    this.name = name;
+    this.description = description;
   }
 }
